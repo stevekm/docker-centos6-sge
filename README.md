@@ -1,8 +1,9 @@
 docker-sge
 ==========
 
-
 Dockerfile to build a container with SGE installed.
+
+# Build
 
 To build type:
 
@@ -12,11 +13,13 @@ To build type:
 docker build -t stevekm/sgeserver .
 ```
 
-To run the container type:
+# Run
 
 - need to use `sgeserver` as hostname
 
 - need to change to `sge001` user inside the container
+
+- `--rm` to remove the container after exiting
 
 ```bash
 $ docker run --rm -t -h sgeserver -i stevekm/sgeserver
@@ -28,6 +31,7 @@ sge001@sgeserver modified "@allhosts" in host group list
 sge001@sgeserver added "main.q" to cluster queue list
 sge001@sgeserver modified "main.q" in cluster queue list
 sgeserver added to submit host list
+
 root@sgeserver:/# sudo -i -u sge001
 
 $ echo "echo Running test from $HOSTNAME" | qsub ; qstat
