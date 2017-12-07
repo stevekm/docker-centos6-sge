@@ -36,3 +36,7 @@ To submit a job run:
 ```bash
 echo "echo Running test from $HOSTNAME" | qsub
 ```
+
+# Notes
+
+Having problems building image due to downloads of lab software, trying to strip down Dockerfile to bare minimum for SGE
