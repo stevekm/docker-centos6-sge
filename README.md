@@ -22,6 +22,7 @@ docker build -t stevekm/sgeserver .
 - `--rm` to remove the container after exiting
 
 ```bash
+# docker run --rm -t -h sgeserver -i stevekm/sgeserver sudo -i -u sge001
 $ docker run --rm -t -h sgeserver -i stevekm/sgeserver
 sgeadmin@sgeserver added "sge001" to manager list
 added "sge001" to access list "users"
