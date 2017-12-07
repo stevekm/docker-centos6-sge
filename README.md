@@ -1,7 +1,6 @@
 docker-sge
 ==========
 
-https://github.com/bgruening/docker-recipes/blob/621e80e37d1829494bc193ce3f20fe7f4833ec2a/freiburger-rna-tools/Dockerfile#L14
 
 Dockerfile to build a container with SGE installed.
 
@@ -85,3 +84,8 @@ iow          0.000
 maxvmem      0.000
 arid         undefined
 ```
+
+# References
+
+Based on Dockerfile hosted [here](https://github.com/bgruening/docker-recipes/blob/621e80e37d1829494bc193ce3f20fe7f4833ec2a/freiburger-rna-tools/Dockerfile#L14
+)

@@ -12,13 +12,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
 # install required dependencies
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y gridengine-master gridengine-exec gridengine-common gridengine-qmon gridengine-client
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y sudo nano less vim procps
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y sudo
+# RUN apt-get -y install python python-virtualenv python-pip
 
 # setup 'sge001' user for
 RUN useradd sge001 --create-home
 RUN adduser sge001 sudo
 
-# ?
+# setup host information
 ADD exec_host /exec_host
 
 # Set maximum of available memory - this is avaiable memory - 1GB
@@ -33,5 +34,4 @@ ADD run.sh /root/run.sh
 RUN chmod +x /root/run.sh
 
 # Startup Commands
-# trick to execute startup commands and run the bash without exiting
 CMD bash -C '/root/run.sh';'bash'
