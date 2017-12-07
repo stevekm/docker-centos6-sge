@@ -13,38 +13,75 @@ To build type:
 docker build -t stevekm/sgeserver .
 ```
 
-To run the image in a container type:
+To run the container type:
+
+- need to use `sgeserver` as hostname
+
+- need to change to `sge001` user inside the container
 
 ```bash
-$ docker run -t -h frtwebserver -i stevekm/sgeserver
-sgeadmin@frtwebserver added "bisge001" to manager list
-added "bisge001" to access list "users"
-bisge001@frtwebserver added "localhost" to exechost list
-bisge001@frtwebserver added "@allhosts" to host group list
-bisge001@frtwebserver modified "@allhosts" in host group list
-bisge001@frtwebserver added "main.q" to cluster queue list
-bisge001@frtwebserver modified "main.q" in cluster queue list
-frtwebserver added to submit host list
-/root/run.sh: line 18: /etc/init.d/tomcat7: No such file or directory
-root@frtwebserver:/# sudo -i -u bisge001
-$ echo "echo Running test from $HOSTNAME" | qsub
+$ docker run --rm -t -h sgeserver -i stevekm/sgeserver
+sgeadmin@sgeserver added "sge001" to manager list
+added "sge001" to access list "users"
+sge001@sgeserver added "localhost" to exechost list
+sge001@sgeserver added "@allhosts" to host group list
+sge001@sgeserver modified "@allhosts" in host group list
+sge001@sgeserver added "main.q" to cluster queue list
+sge001@sgeserver modified "main.q" in cluster queue list
+sgeserver added to submit host list
+root@sgeserver:/# sudo -i -u sge001
+
+$ echo "echo Running test from $HOSTNAME" | qsub ; qstat
 Your job 1 ("STDIN") has been submitted
-$ qstat
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID
 -----------------------------------------------------------------------------------------------------------------
-      1 0.00000 STDIN      bisge001     qw    12/07/2017 18:37:33                                    1
+      1 0.00000 STDIN      sge001       qw    12/07/2017 19:14:55                                    1
 
-$ qstat -xml
-<?xml version='1.0'?>
-<job_info  xmlns:xsd="http://gridengine.sunsource.net/source/browse/*checkout*/gridengine/source/dist/util/resources/schemas/qstat/qstat.xsd?revision=1.11">
-    <queue_info>
-    </queue_info>
-    <job_info>
-    </job_info>
-  </job_info>
-$ qstat
-$ ls
-STDIN.e1  STDIN.o1
 $ cat STDIN.o1
-Running test from frtwebserver
+Running test from sgeserver
+
+$ qacct -j 1
+==============================================================
+qname        main.q
+hostname     sgeserver
+group        sge001
+owner        sge001
+project      NONE
+department   defaultdepartment
+jobname      STDIN
+jobnumber    1
+taskid       undefined
+account      sge
+priority     0
+qsub_time    Thu Dec  7 19:14:55 2017
+start_time   Thu Dec  7 19:15:05 2017
+end_time     Thu Dec  7 19:15:05 2017
+granted_pe   NONE
+slots        1
+failed       0
+exit_status  0
+ru_wallclock 0
+ru_utime     0.010
+ru_stime     0.080
+ru_maxrss    3104
+ru_ixrss     0
+ru_ismrss    0
+ru_idrss     0
+ru_isrss     0
+ru_minflt    480
+ru_majflt    0
+ru_nswap     0
+ru_inblock   0
+ru_oublock   16
+ru_msgsnd    0
+ru_msgrcv    0
+ru_nsignals  0
+ru_nvcsw     6
+ru_nivcsw    7
+cpu          0.090
+mem          0.000
+io           0.000
+iow          0.000
+maxvmem      0.000
+arid         undefined
 ```
