@@ -1,7 +1,3 @@
-printf 'Running startup script\n\n'
-
-set -x
-
 # user account to run SGE under
 sge_user="$1"
 
@@ -21,4 +17,4 @@ sed -i "s|processors            4|processors            `num=$(grep ^processor /
 sed -i "s|slots                 4|slots                 `num=$(grep ^processor /proc/cpuinfo | wc -l) && echo $((num-1))`|g" /queue
 
 
-printf "\nTest the container by logging into the SGE user account and submitting a test job:\n\n%s %s\n\n" "sudo -u $sge_user" '/test.sh'
+# printf "\nTest the container by logging into the SGE user account and submitting a test job:\n\n%s %s\n\n" "sudo -u $sge_user" '/test.sh'

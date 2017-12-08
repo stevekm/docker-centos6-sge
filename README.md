@@ -7,7 +7,7 @@ Dockerfile to build a container with SGE installed.
 
 To build type:
 
-```bash
+```
 git clone git@github.com:stevekm/docker-sge.git
 cd docker-sge
 docker build -t stevekm/sgeserver .
@@ -15,7 +15,7 @@ docker build -t stevekm/sgeserver .
 
 # Run
 
-```bash
+```
 docker run --rm -t -i stevekm/sgeserver
 ```
 
@@ -23,15 +23,12 @@ docker run --rm -t -i stevekm/sgeserver
 
 From inside the container, run `/test.sh`:
 
-```bash
-root@c2da5e1d9442:/# /test.sh
-+ echo 'echo Running test from c2da5e1d9442'
-+ qsub
+```
+root@7022b3a28667:/# /test.sh
 Your job 1 ("STDIN") has been submitted
-+ qstat
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID
 -----------------------------------------------------------------------------------------------------------------
-      1 0.00000 STDIN      root         qw    12/07/2017 23:51:30                                    1
+      1 0.00000 STDIN      root         qw    12/07/2017 23:58:38                                    1
 ```
 
 # References
