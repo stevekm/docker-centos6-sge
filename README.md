@@ -1,4 +1,4 @@
-docker-sge
+docker-centos6-sge
 ==========
 
 Dockerfile to build a container with SGE installed.
@@ -8,9 +8,9 @@ Dockerfile to build a container with SGE installed.
 To build type:
 
 ```
-git clone git@github.com:stevekm/docker-sge.git
-cd docker-sge
-docker build -t stevekm/sgeserver .
+git clone git@github.com:stevekm/docker-centos6-sge.git
+cd docker-centos6-sge
+docker build -t stevekm/docker-centos6-sge .
 ```
 
 # Run
