@@ -16,7 +16,7 @@ docker build -t stevekm/docker-centos6-sge .
 # Run
 
 ```
-docker run --rm -t -i stevekm/sgeserver
+docker run --rm -t -i stevekm/docker-centos6-sge
 ```
 
 # Test

@@ -2,6 +2,7 @@
 # for testing apps that interface with SGE
 # designed to mimic SGE installation on phoenix HPC cluster at NYULMC
 # http://sysadm.mielnet.pl/grid-engine-installation-on-centos-6/
+# https://github.com/gawbul/docker-sge/blob/master/Dockerfile
 
 FROM centos:6
 
@@ -29,6 +30,8 @@ RUN cd /tmp/ && yum localinstall -y gridengine-*
 
 # this part has interactive stuff figure out how to avoid
 # RUN cd /opt/sge && ./install_qmaster
+# try it from here
+# https://github.com/gawbul/docker-sge/blob/master/Dockerfile
 
 
 
